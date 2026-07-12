@@ -1,0 +1,11 @@
+.container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40rpx 30rpx;box-sizing:border-box}
+.header{margin-bottom:60rpx;text-align:center}
+.title{font-size:60rpx;font-weight:900;background:linear-gradient(135deg,#f97316,#ef4444,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.subtitle{font-size:28rpx;color:#9ca3af;margin-top:15rpx;display:block}
+.sport-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20rpx;width:100%;max-width:600rpx;margin-bottom:60rpx}
+.sport-btn{width:46%;max-width:260rpx;background:#1a1a24;border:2rpx solid #2a2a3a;border-radius:24rpx;padding:35rpx 10rpx;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box}
+.sport-btn:active{background:#1f1f2e;border-color:#f97316;transform:scale(.96)}
+.sport-btn .emoji{font-size:52rpx;display:block;margin-bottom:10rpx}
+.sport-btn .label{font-size:26rpx;font-weight:700;color:#d1d5db}
+.footer-text{font-size:22rpx;color:#6b7280;margin-top:10rpx}
+.footer-text.version{color:#4a4a5a;font-size:20rpx;margin-top:20rpx}

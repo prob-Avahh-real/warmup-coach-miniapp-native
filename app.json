@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/workout/workout"
+  ],
+  "window": {
+    "navigationBarTitleText": "热身教练",
+    "navigationBarBackgroundColor": "#0f0f14",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0f0f14"
+  }
+}

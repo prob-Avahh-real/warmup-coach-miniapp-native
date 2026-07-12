@@ -1,0 +1,58 @@
+<!-- 训练页 -->
+<view class="container">
+  <!-- 阶段指示器 -->
+  <view class="phase-dots">
+    <view class="phase-dot {{index < currentPhaseIdx ? 'done' : ''}} {{index === currentPhaseIdx ? 'active' : ''}}"
+          wx:for="{{phases}}" wx:key="index"></view>
+  </view>
+  <text class="phase-label">第{{currentPhaseIdx+1}}阶段 · {{currentPhase.duration}}</text>
+  <text class="phase-title">{{currentPhase.name}}</text>
+
+  <!-- 计时器 -->
+  <view class="timer-wrap">
+    <view class="timer-ring">
+      <view class="ring-bg"></view>
+      <view class="ring-progress" style="background: conic-gradient(#f97316 {{progressDeg}}deg, transparent 0deg);"></view>
+      <view class="ring-inner">
+        <text class="timer-val" wx:if="{{hasDuration}}">{{timerDisplay}}</text>
+        <text class="timer-val rep" wx:else>{{currentEx.reps || ''}}</text>
+        <text class="timer-unit">{{hasDuration ? (currentEx.unit || '秒') : '次'}}</text>
+      </view>
+    </view>
+    <!-- 暂停浮层 -->
+    <view class="pause-overlay" wx:if="{{isPaused}}">
+      <text class="pause-icon">⏸</text>
+    </view>
+  </view>
+
+  <!-- 计数 -->
+  <text class="ex-counter">{{currentExIdx+1}} / {{currentPhase.exercises.length}}</text>
+
+  <!-- 动作卡片 -->
+  <view class="ex-card {{exCardAni}}">
+    <text class="ex-cn">{{currentEx.cn}}</text>
+    <text class="ex-en">{{currentEx.en}}</text>
+
+    <view class="ex-meta">
+      <text class="meta-highlight" wx:if="{{hasDuration}}">⏱ {{currentEx.duration}}{{currentEx.unit||'秒'}}</text>
+      <text class="meta-highlight" wx:if="{{currentEx.reps}}">🔄 {{currentEx.reps}}</text>
+      <text class="meta-normal" wx:if="{{currentEx.muscles}}">💪 {{currentEx.muscles}}</text>
+    </view>
+
+    <view class="ex-cues" wx:if="{{currentEx.cues}}">
+      <text>💡 {{currentEx.cues}}</text>
+    </view>
+  </view>
+
+  <!-- 按钮 -->
+  <view class="btn-row">
+    <button class="btn btn-secondary" bindtap="prevExercise"
+            wx:if="{{!(currentPhaseIdx===0 && currentExIdx===0)}}">◀</button>
+    <button class="btn btn-pause" bindtap="togglePause">{{isPaused ? '▶' : '⏸'}}</button>
+    <button class="btn btn-skip" bindtap="skipExercise" wx:if="{{!isLast}}">跳过</button>
+    <button class="btn btn-primary" bindtap="nextExercise">{{isLast ? '完成 ✓' : '▶'}}</button>
+  </view>
+
+  <!-- 提示：语音指令不可用 -->
+  <text class="voice-note" wx:if="{{showVoiceNote}}">⚠️ 小程序不支持语音控制，请用按钮操作</text>
+</view>

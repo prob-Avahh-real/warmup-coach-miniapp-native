@@ -1,0 +1,18 @@
+<!-- 运动选择页 -->
+<view class="container">
+  <view class="header">
+    <text class="title">🔥 热身教练</text>
+    <text class="subtitle">选择你的运动，开始RAMP热身</text>
+  </view>
+
+  <view class="sport-grid">
+    <view class="sport-btn" wx:for="{{sports}}" wx:key="id"
+          bindtap="startWorkout" data-sport="{{item.id}}">
+      <text class="emoji">{{item.emoji}}</text>
+      <text class="label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <text class="footer-text">RAMP = Raise · Activate · Mobilise · Potentiate</text>
+  <text class="footer-text version">v2.0 · 原生微信小程序 · 语音引导请用Web版</text>
+</view>
